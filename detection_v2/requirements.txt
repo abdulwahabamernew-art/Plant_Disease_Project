@@ -1,0 +1,6 @@
+keras==3.13.2
+ultralytics==8.4.155
+Pillow>=11,<13
+numpy>=1.26,<3
+psutil>=5.9,<8
+torch==2.14.1

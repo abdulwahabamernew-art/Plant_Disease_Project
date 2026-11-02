@@ -1,0 +1,57 @@
+# Python
+__pycache__/
+*.py[cod]
+*.so
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+venv/
+env/
+
+# Secrets and local configuration
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+*.jks
+*.keystore
+credentials*.json
+client_secret*.json
+token*.json
+secrets*.json
+*service-account*.json
+
+# Private/local project assets
+data/
+models/
+outputs/
+results/
+reports/
+notebooks/
+detection_v2/configs/keras/
+detection_v2/configs/ultralytics/
+detection_v2/configs/baseline.json
+detection_v2/configs/runtime.json
+config/class_names.json
+config/plant_detector_config.json
+*.keras
+*.h5
+*.pt
+*.onnx
+*.tflite
+*.npz
+*.npy
+*.csv
+*.parquet
+*.zip
+*.apk
+
+# OS/editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
