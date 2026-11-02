@@ -82,6 +82,14 @@ The repository is intentionally not self-contained because model weights and pri
 
 Do not add private artifacts to this repository just to make local setup easier. Keep them in a local ignored directory or a separate access-controlled storage location.
 
+## Continuous integration
+
+GitHub Actions runs automatically on every `push` and Pull Request. The workflow
+uses read-only repository permissions, compiles the Python source, and runs the
+image-orientation tests that do not require private model weights or datasets.
+Model-backed integration tests remain local until a separate secure test-artifact
+strategy is defined.
+
 ## Security and privacy
 
 Never commit any of the following:

@@ -1,0 +1,39 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    name: Syntax and lightweight tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: detection_v2/requirements.txt
+
+      - name: Install CI dependencies
+        run: python -m pip install --upgrade pip "numpy>=1.26,<3" "Pillow>=11,<13"
+
+      - name: Compile Python sources
+        run: python -m compileall -q detection_v2/src detection_v2/tests detection_v2/scripts
+
+      - name: Run tests that do not require private models or datasets
+        working-directory: detection_v2
+        run: python -m unittest tests.test_image_io -v
