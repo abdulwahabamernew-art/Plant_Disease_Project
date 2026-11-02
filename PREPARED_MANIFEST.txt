@@ -1,6 +1,7 @@
 .env.example	96
 .gitignore	681
-README.md	1500
+PREPARED_MANIFEST.txt	1048
+README.md	4865
 SECURITY.md	521
 detection_v2/PLANT_DETECTOR_README.md	2448
 detection_v2/README.md	3611
