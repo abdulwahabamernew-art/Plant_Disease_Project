@@ -29,31 +29,39 @@ The disease model files are already present, so ordinary inference does not requ
 
 `03_Baseline_CNN_Training.ipynb` and `04_Transfer_Learning_MobileNetV2.ipynb` are optional model-specific alternatives. The combined stage 03 trains both models and is the only stage 03 used in the canonical order. Do not run the alternatives as part of that same workflow: they retrain and overwrite their corresponding model files.
 
-`06_Gradio_Plant_Disease_Interface.ipynb` is a legacy disease-only interface. It bypasses the plant/not-plant detector and can label unrelated images as a disease. Use stage 09 as the final interface.
+`06_Gradio_Plant_Disease_Interface.ipynb` is a legacy disease-only interface. It bypasses the plant/not-plant detector and can label unrelated images as a disease. Use stage 09 or the source-controlled `app.py` interface as the final interface.
+
+## Local Gradio interface
+
+The repository includes a source-controlled interface at [`app.py`](app.py). It keeps the plant gate visible, separates detector-only diagnostics from disease classification, and exposes the annotated image, per-leaf table, crops, and JSON evidence.
+
+From the repository root:
+
+```bash
+python -m pip install -r detection_v2/requirements-ui.txt
+python detection_v2/app.py
+```
+
+The UI is intentionally evidence-first. It labels uncertain or low-confidence results for review and never describes model confidence as diagnostic accuracy. The detector-only button is useful for checking the gate and leaf detector without running disease classification.
 
 ## Project structure
 
 ```text
 Plant_Disease_Project/
+├── detection_v2/
+│   ├── app.py                 # source-controlled Gradio interface
+│   ├── src/
+│   ├── tests/
+│   ├── scripts/
+│   ├── config/
+│   └── requirements*.txt
 ├── notebooks/
 ├── data/
 │   ├── raw/
 │   ├── processed/
 │   ├── splits/
 │   └── plant_detector/
-│       ├── incoming/plant/
-│       ├── incoming/not_plant/
-│       ├── train/plant/          # optional fixed split
-│       ├── train/not_plant/
-│       ├── validation/plant/     # optional fixed split
-│       ├── validation/not_plant/
-│       ├── test/plant/           # optional fixed split
-│       ├── test/not_plant/
-│       └── plant_detector_manifest.csv
 ├── models/
-│   ├── mobilenetv2_best.keras
-│   ├── simple_cnn_best.keras
-│   └── plant_detector/plant_detector_best.keras
 ├── config/
 ├── results/
 └── reports/

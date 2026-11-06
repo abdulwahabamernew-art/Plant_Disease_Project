@@ -1,0 +1,21 @@
+flowchart LR
+    A["Input image"] --> B["Plant gate\nplant / uncertain / not_plant"]
+    B -->|"not_plant"| X["Stop safely\nNo disease classification"]
+    B -->|"plant or uncertain"| C["Leaf detector\noptional YOLO"]
+    C --> D["Leaf crops\nwith padding variants"]
+    D --> E["38-class disease classifier"]
+    A --> F["Full-image classifier view"]
+    F --> G["Raw + crop comparison\nexperimental fusion"]
+    E --> G
+    G --> H["Top-3 predictions\nconfidence + review flags"]
+    H --> I["Annotated image\nJSON metrics + crops"]
+    B -.-> R["Human review\nfor uncertain / low confidence"]
+    G -.-> R
+    classDef gate fill:#0f766e,stroke:#5eead4,color:#fff,stroke-width:2px;
+    classDef model fill:#1d4ed8,stroke:#93c5fd,color:#fff,stroke-width:2px;
+    classDef output fill:#7c3aed,stroke:#c4b5fd,color:#fff,stroke-width:2px;
+    classDef safety fill:#92400e,stroke:#fbbf24,color:#fff,stroke-width:2px;
+    class B gate;
+    class C,D,E,F,G model;
+    class H,I output;
+    class X,R safety;
