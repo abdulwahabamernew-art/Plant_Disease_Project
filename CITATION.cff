@@ -1,0 +1,16 @@
+cff-version: 1.2.0
+title: "Plant Disease Project"
+message: "If you use this source-only pipeline, please cite the project and its underlying datasets and models."
+type: software
+authors:
+  - family-names: Amer
+    given-names: Abdulwahab Yahya Mohammed
+version: 1.0.0
+date-released: 2026-11-06
+repository-code: "https://github.com/abdulwahabamernew-art/Plant_Disease_Project"
+license: MIT
+keywords:
+  - plant disease
+  - computer vision
+  - image classification
+  - object detection

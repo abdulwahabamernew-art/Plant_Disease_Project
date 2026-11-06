@@ -1,5 +1,8 @@
 # Plant Disease Project
 
+[![CI](https://github.com/abdulwahabamernew-art/Plant_Disease_Project/actions/workflows/ci.yml/badge.svg)](https://github.com/abdulwahabamernew-art/Plant_Disease_Project/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-22c55e.svg)](LICENSE)
+
 A source-only computer-vision pipeline for plant-disease classification with a separate plant/not-plant gate and optional leaf detection. The project is designed to reject obvious non-plant images before running the 38-class disease classifier.
 
 > **Repository scope:** This GitHub repository contains safe source code, tests, dependency files, and documentation only. Private datasets, trained weights, runtime caches, generated reports, notebooks, Android build artifacts, and signing material are intentionally excluded.
@@ -101,6 +104,6 @@ Never commit any of the following:
 
 The repository `.gitignore` blocks common secret, model, dataset, output, and Android artifact patterns. Review `git diff --cached` before every push. If a secret is ever exposed, revoke or rotate it immediately; removing it in a later commit is not sufficient. See [`SECURITY.md`](SECURITY.md).
 
-## License
+## License and citation
 
-No license has been added yet. Add the appropriate license and attribution information before distributing the code publicly.
+The source code is released under the MIT License. See [LICENSE](LICENSE). Model weights, datasets, and third-party assets may have separate terms and must be reviewed independently. For academic reuse, see [CITATION.cff](CITATION.cff).
